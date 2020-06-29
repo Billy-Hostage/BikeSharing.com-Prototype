@@ -1,6 +1,7 @@
 <template>
     <div>
-        Page {{$route.params.pathMatch}} doesn't exists in route list.
+        <h1>OOPS Page is missing T_T</h1>
+        Page {{$route.params.pathMatch}} doesn't exists in routing list.
     </div>
 </template>
 

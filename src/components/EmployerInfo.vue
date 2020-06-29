@@ -1,39 +1,39 @@
 <template>
-    <div class="row">
+    <div class="row" style="margin-top: 1%">
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
             <div class="jumbotron">
                 <h2>
-                    Hello, world!
+                    宣传骑行的好处
                 </h2>
                 <p>
-                    This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+                    通过内部邮件，张贴通知等方式宣传骑行的优势
                 </p>
                 <p>
-                    <a class="btn btn-primary btn-large" href="#">Learn more</a>
+                    <b-button variant="primary">了解更多</b-button>
                 </p>
             </div>
             <div class="jumbotron">
                 <h2>
-                    Hello, world!
+                    举办骑行比赛
                 </h2>
                 <p>
-                    This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+                    通过指定平台的计数举办有奖比赛！谁会拒绝免费的奖励呢？
                 </p>
                 <p>
-                    <a class="btn btn-primary btn-large" href="#">Learn more</a>
+                    <b-button variant="primary">现在开始</b-button>
                 </p>
             </div>
             <div class="jumbotron">
                 <h2>
-                    Hello, world!
+                    以身作则
                 </h2>
                 <p>
-                    This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+                    领导者理应以身作则，贯彻骑行之道
                 </p>
                 <p>
-                    <a class="btn btn-primary btn-large" href="#">Learn more</a>
+                    <b-button variant="primary">行动起来</b-button>
                 </p>
             </div>
         </div>
