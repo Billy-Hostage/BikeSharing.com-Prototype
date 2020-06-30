@@ -32,35 +32,27 @@
                 </table>
                 <hr>
                 <div id="comments">
-                    <div class="media">
-                        <img class="mr-3" alt="Bootstrap Media Preview" src="https://www.layoutit.com/img/sports-q-c-64-64-8.jpg" />
+                    <div class="media" v-for="(data,i) in viewingRoute.comments" v-bind:key="i">
+                        <img class="mr-3" :src="data.avatarSrc" />
                         <div class="media-body">
                             <h6 class="" align="left">
-                                用户A
-                            </h6> <p class="comment">骑自行车有益身体健康</p>
+                                {{data.userName}}
+                            </h6> <p class="comment">{{data.comment}}</p>
                         </div>
-                    </div>
-                    <br>
-                    <div class="media">
-                        <a class="pr-3" href="#"><img alt="Bootstrap Media Another Preview" src="https://www.layoutit.com/img/sports-q-c-64-64-2.jpg" /></a>
-                        <div class="media-body">
-                            <h6 class="" align="left">
-                                用户B
-                            </h6> <p class="comment">低碳生活，从我做起</p>
-                        </div>
+                        <br>
                     </div>
                 </div>
                 <h4 style="margin-top: 3%">评价</h4>
                 <form method="get">
-                    <input type="text" class="form-control" placeholder="请输入用户名"><br>
+                    <input type="text" class="form-control" placeholder="请输入用户名" v-model="userName"><br>
                     <div class="input-group">
-                        <textarea id="commentInput" class="form-control" placeholder="请输入评价"></textarea>
+                        <textarea id="commentInput" class="form-control" placeholder="请输入评价" v-model="userComment"></textarea>
                     </div>
                     <div id="commentButtons">
                         <button type="reset" class="btn btn-danger">
                             清空
                         </button>&nbsp;
-                        <button type="submit" class="btn btn-success">
+                        <button type="button" class="btn btn-success" @click="commitOnRoute(viewingRoute.index)">
                             提交
                         </button>
                     </div>
@@ -78,12 +70,18 @@
         data() {
             return {
                 routes: [
-                    {index: 1, name: '第一条路线', description: '这是第一条路线的介绍内容，可以简要描述路径特色和注意点', start: {name: '深圳大学', lng: 113.942624,lat: 22.538981}, end: {name: '科兴科学园', lng: 113.950099, lat: 22.553799}},
+                    {index: 1, name: '第一条路线', description: '这是第一条路线的介绍内容，可以简要描述路径特色和注意点', start: {name: '深圳大学', lng: 113.942624,lat: 22.538981}, end: {name: '科兴科学园', lng: 113.950099, lat: 22.553799},
+                    comments:[
+                        {index: 1, userName: '用户A', avatarSrc: 'https://www.layoutit.com/img/sports-q-c-64-64-8.jpg', comment: '骑自行车有益身体健康'},
+                        {index: 2, userName: '用户B', avatarSrc: 'https://www.layoutit.com/img/sports-q-c-64-64-2.jpg', comment: '低碳生活，从我做起'}
+                    ]},
                     {index: 2, name: '第二条路线', description: '这是第二条路线'},
                 ],
                 viewingRoute: undefined,
                 center: {lng: 0, lat: 0},
-                zoom: 3
+                zoom: 3,
+                userName: '',
+                userComment: '',
             }
         },
         beforeMount() {
@@ -112,6 +110,10 @@
                 let start = new BMap.Point(this.viewingRoute.start.lng, this.viewingRoute.start.lat);
                 let end = new BMap.Point(this.viewingRoute.end.lng, this.viewingRoute.end.lat);
                 riding.search(start, end);
+            },
+            commitOnRoute(index) {
+                if(this.userName === '' || this.userComment === '') return;
+                this.routes[parseInt(index) - 1].comments.push({userName: this.userName, comment: this.userComment, avatarSrc: 'https://www.layoutit.com/img/sports-q-c-64-64-2.jpg'});
             }
         }
     }
